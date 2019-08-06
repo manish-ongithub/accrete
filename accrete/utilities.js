@@ -156,7 +156,11 @@ function CreateDynamicGrid(tableID, data) {
   }
 
   var table = document.getElementById(tableID);
-
+  if (table) {
+    while (table.hasChildNodes()) {
+      table.removeChild(table.childNodes[0]);
+    }
+  }
   // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
   var tr = table.insertRow(-1); // TABLE ROW.
@@ -192,47 +196,26 @@ var sortByProperty = function(property) {
 
 function SortTableColumn(evt) {
   console.log(evt);
-  var tbl_id = evt.target.params.table_id;
-  var sortColumn = evt.target.params.columnIndex;
+  var table_id = evt.target.params.table_id;
+  //var sortColumn = evt.target.params.columnIndex;
   var sortBy = evt.target.params.colName;
 
-  Trending_industries.sort(sortByProperty(sortBy));
-
-  /*
-  var table = document.getElementById(tbl_id);
-  var tbody = table.getElementsByTagName("tbody")[0];
-  var rows = tbody.getElementsByTagName("tr");
-  var arrayOfRows = new Array();
-  type = type.toUpperCase();
-
-  for (var i = 1, len = rows.length; i < len; i++) {
-    arrayOfRows[i - 1] = new Object();
-    arrayOfRows[i - 1].oldIndex = i;
-    var celltext = rows[i]
-      .getElementsByTagName("td")
-      [sortColumn].innerHTML.replace(/<[^>]*>/g, "");
-    var re = type == "N" ? /[^\.\-\+\d]/g : /[^a-zA-Z0-9]/g;
-    arrayOfRows[i - 1].value = celltext
-      .replace(re, "")
-      .substr(0, 25)
-      .toLowerCase();
+  if (table_id == "tblTrendingInd") {
+    Trending_industries.sort(sortByProperty(sortBy));
+    CreateDynamicGrid("tblTrendingInd", Trending_industries);
   }
-
-  switch (type) {
-    case "N":
-      arrayOfRows.sort(CompareRowOfNumbers);
-      break;
-    default:
-      arrayOfRows.sort(CompareRowOfText);
+  if (table_id == "tblTrendingStocks") {
+    Trending_stocks.sort(sortByProperty(sortBy));
+    CreateDynamicGrid("tblTrendingStocks", Trending_stocks);
   }
-
-  var newTableBody = document.createElement("tbody");
-
-  for (var i = 0, len = arrayOfRows.length; i < len; i++) {
-    newTableBody.appendChild(rows[arrayOfRows[i].oldIndex].cloneNode(true));
+  if (table_id == "tblTrendingTopics") {
+    Trending_topics.sort(sortByProperty(sortBy));
+    CreateDynamicGrid("tblTrendingTopics", Trending_topics);
   }
-  table.replaceChild(newTableBody, tbody);
-  */
+  if (table_id == "tblEarningCall") {
+    LatestEarningCall.sort(sortByProperty(sortBy));
+    CreateDynamicGrid("tblEarningCall", LatestEarningCall);
+  }
 }
 
 function CompareRowOfText(a, b) {
