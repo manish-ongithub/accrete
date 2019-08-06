@@ -44,7 +44,7 @@
   background: #040710;
 }
 /*Chrome*/
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+/*@media screen and (-webkit-min-device-pixel-ratio:0) {*/
   input[type='range'] {
     overflow: hidden;
     width: 100px;
@@ -56,8 +56,9 @@
   input[type='range']::-webkit-slider-runnable-track {
     height: 5px;
     -webkit-appearance: none;
-   /* color: #13bba4;*/
+   /* color: #13bba4;
     color:rgb(255,0,0);
+    */
     margin-top: -1px;
   }
   
@@ -75,18 +76,4 @@
     box-shadow: -100px 0 0 100px rgb(255,0,0);
   }
 
-}
-/** FF*/
-input[type="range"]::-moz-range-progress {
-background-color: #43e5f7; 
-}
-input[type="range"]::-moz-range-track {  
-background-color: #9a905d;
-}
-/* IE*/
-input[type="range"]::-ms-fill-lower {
-background-color: #43e5f7; 
-}
-input[type="range"]::-ms-fill-upper {  
-background-color: #9a905d;
-}
+/*}*/
