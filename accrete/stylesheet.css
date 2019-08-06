@@ -1,0 +1,45 @@
+.body_class {
+  width: 1440px;
+  height: 1162px;
+  background: rgb(4, 7, 16);
+}
+.cardHeader {
+  background-color: rgb(18, 24, 42);
+  font-family: Roboto;
+}
+.table-back-color {
+  color: rgb(12, 16, 29);
+}
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+/* style glyph */
+.inner-addon .fa {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .fa {
+  left: 0px;
+}
+.right-addon .fa {
+  right: 0px;
+}
+
+/* add padding  */
+.left-addon input {
+  padding-left: 30px;
+}
+.right-addon input {
+  padding-right: 30px;
+}
+
+.industry_C {
+  width: 1440px;
+  height: 1162px;
+  background: #040710;
+}
