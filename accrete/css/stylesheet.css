@@ -3,6 +3,16 @@
   height: 1162px;
   background: rgb(4, 7, 16);
 }
+.greenBadge {
+  font-size: 100%;
+  font-weight: 400;
+  width: 80px;
+  background-color: rgb(48, 204, 91);
+}
+.customBadge {
+  font-size: 100%;
+  font-weight: 400;
+}
 .cardHeader {
   background-color: rgb(18, 24, 42);
   font-family: Roboto;
@@ -45,35 +55,34 @@
 }
 /*Chrome*/
 /*@media screen and (-webkit-min-device-pixel-ratio:0) {*/
-  input[type='range'] {
-    overflow: hidden;
-    width: 100px;
-    -webkit-appearance: none;
-    /*background-color: #9a905d;*/
-    background-color: rgb(0,255,0);
-  }
-  
-  input[type='range']::-webkit-slider-runnable-track {
-    height: 5px;
-    -webkit-appearance: none;
-   /* color: #13bba4;
+input[type="range"] {
+  overflow: hidden;
+  width: 100px;
+  -webkit-appearance: none;
+  /*background-color: #9a905d;*/
+  background-color: rgb(0, 255, 0);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  -webkit-appearance: none;
+  /* color: #13bba4;
     color:rgb(255,0,0);
     */
-    margin-top: -1px;
-  }
-  
-  input[type='range']::-webkit-slider-thumb {
-    
-    -webkit-appearance: none;
-    
-    /*cursor: ew-resize;*/
-    
-    width: 4px;
-    height: 15px;
-    background: rgb(33,40,56);
-    cursor: pointer;
-    /*box-shadow: -80px 0 0 80px #43e5f7;*/
-    box-shadow: -100px 0 0 100px rgb(255,0,0);
-  }
+  margin-top: -1px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+
+  /*cursor: ew-resize;*/
+
+  width: 4px;
+  height: 15px;
+  background: rgb(33, 40, 56);
+  cursor: pointer;
+  /*box-shadow: -80px 0 0 80px #43e5f7;*/
+  box-shadow: -100px 0 0 100px rgb(255, 0, 0);
+}
 
 /*}*/

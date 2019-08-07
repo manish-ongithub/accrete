@@ -2,28 +2,33 @@ var Trending_industries = [
   {
     Industry: "Security Services",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Industry: "Industrial Cases",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Industry: "Brokerages",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
 
   {
     Industry: "Life Insurance",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Industry: "Timber",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   }
 ];
 
@@ -31,28 +36,33 @@ var Trending_stocks = [
   {
     Company: "BEN-US",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Company: "LB-US",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Company: "DISH-US",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
 
   {
     Company: "CME-US",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Company: "BBBY-US",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   }
 ];
 
@@ -60,28 +70,33 @@ var Trending_topics = [
   {
     Company: "Switches",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Company: "Hygiene",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Company: "Upstream",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
 
   {
     Company: "Hardware",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   },
   {
     Company: "Routers",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%"
+    "Q/Q Delta": "13.23%",
+    "arr-dir": "up"
   }
 ];
 
@@ -91,21 +106,24 @@ var LatestEarningCall = [
     Company: "Apple Inc.",
     "Aggregate Sentiment": "3.07",
     "Q/Q Delta": "5.8%",
-    "Driving Topics": "Operating Income, Cash flow, Capital Returns"
+    "Driving Topics": "Operating Income, Cash flow, Capital Returns",
+    "arr-dir": "up"
   },
   {
     "Earnings Date": "05/10/2019 (q2)",
     Company: "Fabrinet",
     "Aggregate Sentiment": "2.59",
     "Q/Q Delta": "1.2%",
-    "Driving Topics": "Operating Income, Streaming, Leverage"
+    "Driving Topics": "Operating Income, Streaming, Leverage",
+    "arr-dir": "up"
   },
   {
     "Earnings Date": "05/10/2019 (Q1)",
     Company: "Hamilton Beach Brands Holding...",
     "Aggregate Sentiment": "-0.56",
     "Q/Q Delta": "11.0%",
-    "Driving Topics": "Rents, funds from operation, Occupancy"
+    "Driving Topics": "Rents, funds from operation, Occupancy",
+    "arr-dir": "up"
   },
 
   {
@@ -113,35 +131,40 @@ var LatestEarningCall = [
     Company: "Eastman Kodak Company",
     "Aggregate Sentiment": "2.60",
     "Q/Q Delta": "6.3%",
-    "Driving Topics": "Operating Cost, Capital Returns, EBITA"
+    "Driving Topics": "Operating Cost, Capital Returns, EBITA",
+    "arr-dir": "up"
   },
   {
     "Earnings Date": "05/10/2019 (q3)",
     Company: "Koss Corporation",
     "Aggregate Sentiment": "1.06",
     "Q/Q Delta": "1.4%",
-    "Driving Topics": "Operating Income, Leverage, Cash Flow"
+    "Driving Topics": "Operating Income, Leverage, Cash Flow",
+    "arr-dir": "up"
   },
   {
     "Earnings Date": "05/10/2019 (q3)",
     Company: "Emersion Radio Corp",
     "Aggregate Sentiment": "0.50",
     "Q/Q Delta": "18.4%",
-    "Driving Topics": "Guidance, Life and Health Insurance, Premiums"
+    "Driving Topics": "Guidance, Life and Health Insurance, Premiums",
+    "arr-dir": "up"
   },
   {
     "Earnings Date": "05/10/2019 (Q1)",
     Company: "Sony Corporation",
     "Aggregate Sentiment": "0.76",
     "Q/Q Delta": "13.2%",
-    "Driving Topics": "Leverage, Automation, Building Products"
+    "Driving Topics": "Leverage, Automation, Building Products",
+    "arr-dir": "up"
   },
   {
     "Earnings Date": "05/10/2019 (Q1)",
     Company: "Sonos, Inc.",
     "Aggregate Sentiment": "1.76",
     "Q/Q Delta": "4.1%",
-    "Driving Topics": "Guidance, Building Products, EMEA"
+    "Driving Topics": "Guidance, Building Products, EMEA",
+    "arr-dir": "up"
   }
 ];
 
@@ -149,8 +172,10 @@ function CreateDynamicGrid(tableID, data) {
   var col = [];
   for (var i = 0; i < data.length; i++) {
     for (var key in data[i]) {
-      if (col.indexOf(key) === -1) {
-        col.push(key);
+      if (key !== "arr-dir") {
+        if (col.indexOf(key) === -1) {
+          col.push(key);
+        }
       }
     }
   }
@@ -183,7 +208,27 @@ function CreateDynamicGrid(tableID, data) {
 
     for (var j = 0; j < col.length; j++) {
       var tabCell = tr.insertCell(-1);
-      tabCell.innerHTML = data[i][col[j]];
+      if (col[j] == "Driving Topics") {
+        var valArr = data[i][col[j]].split(",");
+        var strHTML = "";
+        for (let k = 0; k < valArr.length; ++k) {
+          strHTML +=
+            '<span  class="badge badge-secondary customBadge">' +
+            valArr[k] +
+            "</span>&nbsp";
+        }
+        tabCell.innerHTML = strHTML;
+      } else if (col[j] == "Q/Q Delta") {
+        let arr_str = "";
+
+        var strHTML =
+          '<span  class="badge badge-secondary greenBadge" > <i class="fa fa-long-arrow-up"></i>&nbsp;' +
+          data[i][col[j]] +
+          "</span>&nbsp";
+        tabCell.innerHTML = strHTML;
+      } else {
+        tabCell.innerHTML = data[i][col[j]];
+      }
     }
   }
 }
