@@ -352,7 +352,10 @@ function CreateCRSD_Chart(elementID) {
 
     title: {
       text: "Compay Ranking by Sentiment Delta",
-      align: "left"
+      align: "left",
+      style: {
+        color: "white"
+      }
     },
     subtitle: {
       text: ""
@@ -362,7 +365,10 @@ function CreateCRSD_Chart(elementID) {
     // },
     xAxis: [
       {
-        categories: categories
+        categories: categories,
+        style: {
+          color: "white"
+        }
         //reversed: false,
       }
     ],
@@ -416,11 +422,17 @@ function CreateCRSD_Chart(elementID) {
 function CreateAST_Chart(elementID) {
   Highcharts.chart(elementID, {
     chart: {
-      backgroundColor: "rgb(12,16,29)"
+      backgroundColor: "rgb(12,16,29)",
+      style: {
+        color: "white"
+      }
     },
     title: {
       text: "Aggregate Sentiment Trend",
-      align: "left"
+      align: "left",
+      style: {
+        color: "white"
+      }
     },
 
     xAxis: {
