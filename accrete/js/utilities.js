@@ -346,8 +346,10 @@ function CreateCRSD_Chart(elementID) {
   Highcharts.chart(elementID, {
     chart: {
       type: "bar",
-      color: "rgb(18, 24, 42)"
+      color: "rgb(18, 24, 42)",
+      backgroundColor: "rgb(12,16,29)"
     },
+
     title: {
       text: "Compay Ranking by Sentiment Delta",
       align: "left"
@@ -355,6 +357,9 @@ function CreateCRSD_Chart(elementID) {
     subtitle: {
       text: ""
     },
+    // legend: {
+    //   enabled: false
+    // },
     xAxis: [
       {
         categories: categories
@@ -410,6 +415,9 @@ function CreateCRSD_Chart(elementID) {
 
 function CreateAST_Chart(elementID) {
   Highcharts.chart(elementID, {
+    chart: {
+      backgroundColor: "rgb(12,16,29)"
+    },
     title: {
       text: "Aggregate Sentiment Trend",
       align: "left"
@@ -431,6 +439,7 @@ function CreateAST_Chart(elementID) {
       // },
     },
     legend: {
+      enabled: false,
       layout: "vertical",
       align: "right",
       verticalAlign: "middle"
@@ -443,23 +452,24 @@ function CreateAST_Chart(elementID) {
         //name: 'Installation',
         data: [3.8, 4.5, 3.5, 2.5, 3, 2, 3, 3.5]
       }
-    ],
+    ]
 
-    responsive: {
-      rules: [
-        {
-          condition: {
-            maxWidth: 500
-          },
-          chartOptions: {
-            legend: {
-              layout: "horizontal",
-              align: "center",
-              verticalAlign: "bottom"
-            }
-          }
-        }
-      ]
-    }
+    // responsive: {
+    //   rules: [
+    //     {
+    //       condition: {
+    //         maxWidth: 500
+    //       },
+    //       chartOptions: {
+    //         legend: {
+    //           enable: false,
+    //           layout: "horizontal",
+    //           align: "center",
+    //           verticalAlign: "bottom"
+    //         }
+    //       }
+    //     }
+    //   ]
+    // }
   });
 }

@@ -23,11 +23,13 @@
         Highcharts.chart("divMobileDevices", {
           chart: {
             type: "column",
-            borderWidth: 0
+            borderWidth: 0,
+            backgroundColor: "rgb(12,16,29)"
           },
           title: {
             text: "Mobile Devices",
-            align: "left"
+            align: "left",
+            color: "white"
           },
           xAxis: {
             visible: false
@@ -51,7 +53,8 @@
         });
         Highcharts.chart("divServices", {
           chart: {
-            type: "column"
+            type: "column",
+            backgroundColor: "rgb(12,16,29)"
           },
           title: {
             text: "Mobile Devices",
@@ -76,7 +79,8 @@
         });
         Highcharts.chart("divMargins", {
           chart: {
-            type: "column"
+            type: "column",
+            backgroundColor: "rgb(12,16,29)"
           },
           title: {
             text: "Mobile Devices",
@@ -101,7 +105,8 @@
         });
         Highcharts.chart("divGuidance", {
           chart: {
-            type: "column"
+            type: "column",
+            backgroundColor: "rgb(12,16,29)"
           },
           title: {
             text: "Mobile Devices",
@@ -156,17 +161,9 @@
             Consumer Goods - Electronic Equipment
             <i class="fa fa-angle-down"></i>
           </button>
-        </div>
-      </div>
-      <br />
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <input
-              type="range"
-              class="form-control-range"
-              id="formControlRange"
-            />
+          <div>
+            <span class="text-white"> Sentiment Scale </span
+            ><input type="range" />
           </div>
         </div>
       </div>
@@ -203,7 +200,7 @@
       <div class="row">
         <div class="col">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="padding:0px;">
               <div id="divAST"></div>
             </div>
           </div>
@@ -213,7 +210,7 @@
       <div class="row">
         <div class="col">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="padding:0px;">
               <div id="divCRSD"></div>
             </div>
           </div>
@@ -222,11 +219,15 @@
       <br />
       <div class="row">
         <div class="col ">
-          <div class="card">
+          <div class="card text-white" style="background-color: rgb(12,16,29);">
             <div class="card-body">
               <div>Latest Earning Calls</div>
               <br />
-              <table id="tblEarningCall" class="table table-dark"></table>
+              <table
+                id="tblEarningCall"
+                class="table table-dark"
+                style="background-color: rgb(18, 24, 42)"
+              ></table>
             </div>
           </div>
         </div>
