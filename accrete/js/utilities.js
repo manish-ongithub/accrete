@@ -1,3 +1,4 @@
+"use strict";
 var Trending_industries = [
   {
     Industry: "Security Services",
@@ -168,7 +169,19 @@ var LatestEarningCall = [
   }
 ];
 
-function CreateDynamicGrid(tableID, data) {
+function CreateDynamicGrid(tableID, data, sortParams) {
+  var sortedColumnName = "";
+  var sortDir = "asc";
+  var sortArrow = "";
+  if (sortParams != undefined) {
+    sortedColumnName = sortParams.col;
+    sortDir = sortParams.dir;
+    if (sortDir == "asc") {
+      sortArrow = '&nbsp;<i class="fa fa-long-arrow-up"></i>';
+    } else {
+      sortArrow = '&nbsp;<i class="fa fa-long-arrow-down"></i>';
+    }
+  }
   var col = [];
   for (var i = 0; i < data.length; i++) {
     for (var key in data[i]) {
@@ -192,13 +205,28 @@ function CreateDynamicGrid(tableID, data) {
 
   for (var i = 0; i < col.length; i++) {
     var th = document.createElement("th"); // TABLE HEADER.
-    th.addEventListener("click", SortTableColumn);
-    th.params = {};
-    th.params.table_id = tableID;
-    th.params.columnIndex = i;
-    th.params.colName = col[i];
 
-    th.innerHTML = col[i];
+    if (
+      col[i] == "Company" ||
+      col[i] == "Aggregate Sentiment" ||
+      col[i] == "Q/Q Delta" ||
+      col[i] == "Industry"
+    ) {
+      var link = document.createElement("a");
+      link.setAttribute("class", "sortableHeader text-white");
+      //link.setAttribute("href", "");
+      if (col[i] == sortedColumnName) link.innerHTML = col[i] + sortArrow;
+      else link.innerHTML = col[i];
+      link.addEventListener("click", SortTableColumn, false);
+      link.params = {};
+      link.params.table_id = tableID;
+      link.params.columnIndex = i;
+      link.params.colName = col[i];
+      link.params.dir = sortDir;
+      th.appendChild(link);
+    } else {
+      th.innerHTML = col[i];
+    }
     tr.appendChild(th);
   }
 
@@ -233,10 +261,25 @@ function CreateDynamicGrid(tableID, data) {
   }
 }
 
-var sortByProperty = function(property) {
-  return function(x, y) {
-    return x[property] === y[property] ? 0 : x[property] > y[property] ? 1 : -1;
-  };
+var sortByProperty = function(property, dir) {
+  if (dir == "asc") {
+    return function(x, y) {
+      return x[property] === y[property]
+        ? 0
+        : x[property] > y[property]
+        ? 1
+        : -1;
+    };
+  }
+  if (dir == "desc") {
+    return function(x, y) {
+      return x[property] === y[property]
+        ? 0
+        : x[property] < y[property]
+        ? 1
+        : -1;
+    };
+  }
 };
 
 function SortTableColumn(evt) {
@@ -244,22 +287,28 @@ function SortTableColumn(evt) {
   var table_id = evt.target.params.table_id;
   //var sortColumn = evt.target.params.columnIndex;
   var sortBy = evt.target.params.colName;
+  var dir = evt.target.params.dir;
+  var sortParams = {};
+  sortParams.col = sortBy;
+  if (dir == "asc") sortParams.dir = "desc";
+  else if (dir == "desc") sortParams.dir = "asc";
 
   if (table_id == "tblTrendingInd") {
-    Trending_industries.sort(sortByProperty(sortBy));
-    CreateDynamicGrid("tblTrendingInd", Trending_industries);
+    Trending_industries.sort(sortByProperty(sortBy, dir));
+
+    CreateDynamicGrid("tblTrendingInd", Trending_industries, sortParams);
   }
   if (table_id == "tblTrendingStocks") {
-    Trending_stocks.sort(sortByProperty(sortBy));
-    CreateDynamicGrid("tblTrendingStocks", Trending_stocks);
+    Trending_stocks.sort(sortByProperty(sortBy, dir));
+    CreateDynamicGrid("tblTrendingStocks", Trending_stocks, sortParams);
   }
   if (table_id == "tblTrendingTopics") {
-    Trending_topics.sort(sortByProperty(sortBy));
-    CreateDynamicGrid("tblTrendingTopics", Trending_topics);
+    Trending_topics.sort(sortByProperty(sortBy, dir));
+    CreateDynamicGrid("tblTrendingTopics", Trending_topics, sortParams);
   }
   if (table_id == "tblEarningCall") {
-    LatestEarningCall.sort(sortByProperty(sortBy));
-    CreateDynamicGrid("tblEarningCall", LatestEarningCall);
+    LatestEarningCall.sort(sortByProperty(sortBy, dir));
+    CreateDynamicGrid("tblEarningCall", LatestEarningCall, sortParams);
   }
 }
 
