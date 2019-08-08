@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <!-- <link rel="stylesheet" href="css/bootstrap.css" /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/stylesheet.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="js/utilities.js"></script>
     <script>
@@ -61,9 +71,9 @@
     </div>
     <br />
     <div class="container">
-      <div class="row">
-        <div class="col ">
-          <div class="card">
+      <div class="row no-gutters">
+        <div class="col">
+          <div class="card" style="border:0;">
             <div
               class="card-header text-white"
               style="background-color: rgb(18, 24, 42);"
@@ -74,14 +84,14 @@
             <div class="card-body" style="padding:0px;">
               <table
                 id="tblTrendingInd"
-                class="table table-dark"
-                style="background-color:rgb(12,16,29);"
+                class="table table-dark table-sm"
+                style="background-color:rgb(12,16,29);margin-bottom:0;"
               ></table>
             </div>
           </div>
         </div>
-        <div class="col ">
-          <div class="card">
+        <div class="col" style="padding-left: 10px;padding-right: 10px;">
+          <div class="card" style="border:0;">
             <div
               class="card-header text-white"
               style="background-color: rgb(18, 24, 42);"
@@ -92,14 +102,14 @@
             <div class="card-body" style="padding:0px;">
               <table
                 id="tblTrendingStocks"
-                class="table table-dark"
-                style="background-color:rgb(12,16,29);"
+                class="table table-dark table-sm"
+                style="background-color:rgb(12,16,29);margin-bottom:0;"
               ></table>
             </div>
           </div>
         </div>
-        <div class="col ">
-          <div class="card">
+        <div class="col">
+          <div class="card" style="border:0;">
             <div
               class="card-header text-white"
               style="background-color: rgb(18, 24, 42);"
@@ -110,8 +120,8 @@
             <div class="card-body" style="padding:0px;">
               <table
                 id="tblTrendingTopics"
-                class="table table-dark"
-                style="background-color:rgb(12,16,29);"
+                class="table table-dark table-sm"
+                style="background-color:rgb(12,16,29);margin-bottom:0;"
               ></table>
             </div>
           </div>

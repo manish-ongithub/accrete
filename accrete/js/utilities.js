@@ -220,7 +220,6 @@ function CreateDynamicGrid(tableID, data, sortParams) {
 
   for (var i = 0; i < col.length; i++) {
     var th = document.createElement("th"); // TABLE HEADER.
-
     if (
       col[i] == "Company" ||
       col[i] == "Aggregate Sentiment" ||
@@ -228,8 +227,8 @@ function CreateDynamicGrid(tableID, data, sortParams) {
       col[i] == "Industry"
     ) {
       var link = document.createElement("a");
-      link.setAttribute("class", "sortableHeader text-white");
-      //link.setAttribute("href", "");
+      link.setAttribute("class", "sortableHeader");
+      link.setAttribute("style", "font-size:14px;font-weight:normal;");
       if (col[i] == sortedColumnName) {
         link.innerHTML = col[i] + sortArrow;
       } else {
@@ -245,6 +244,9 @@ function CreateDynamicGrid(tableID, data, sortParams) {
     } else {
       th.innerHTML = col[i];
     }
+    if (col[i] == "Aggregate Sentiment" || col[i] == "Q/Q Delta") {
+      th.setAttribute("style", "text-align:center;");
+    }
     tr.appendChild(th);
   }
 
@@ -254,6 +256,9 @@ function CreateDynamicGrid(tableID, data, sortParams) {
 
     for (var j = 0; j < col.length; j++) {
       var tabCell = tr.insertCell(-1);
+      if (col[j] == "Aggregate Sentiment" || col[j] == "Q/Q Delta") {
+        tabCell.setAttribute("style", "text-align:center;");
+      }
       if (col[j] == "Driving Topics") {
         var valArr = data[i][col[j]].split(",");
         var strHTML = "";
