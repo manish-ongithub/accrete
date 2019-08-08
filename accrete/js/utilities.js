@@ -2,18 +2,21 @@
 var Trending_industries = [
   {
     Industry: "Security Services",
+    subText: "Diversified Industries",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
   },
   {
     Industry: "Industrial Cases",
+    subText: "Chemicals",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
   },
   {
     Industry: "Brokerages",
+    subText: "Financial Institutions Group",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
@@ -21,12 +24,14 @@ var Trending_industries = [
 
   {
     Industry: "Life Insurance",
+    subText: "Financial Institutions Group",
     "Aggregate Sentiment": "3.5",
-    "Q/Q Delta": "13.23%",
-    "arr-dir": "up"
+    "Q/Q Delta": "13.12%",
+    "arr-dir": "down"
   },
   {
     Industry: "Timber",
+    subText: "Real Estate, Gaming & Lod...",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
@@ -185,7 +190,7 @@ function CreateDynamicGrid(tableID, data, sortParams) {
   var col = [];
   for (var i = 0; i < data.length; i++) {
     for (var key in data[i]) {
-      if (key !== "arr-dir") {
+      if (key !== "arr-dir" && key !== "subText") {
         if (col.indexOf(key) === -1) {
           col.push(key);
         }
@@ -215,8 +220,12 @@ function CreateDynamicGrid(tableID, data, sortParams) {
       var link = document.createElement("a");
       link.setAttribute("class", "sortableHeader text-white");
       //link.setAttribute("href", "");
-      if (col[i] == sortedColumnName) link.innerHTML = col[i] + sortArrow;
-      else link.innerHTML = col[i];
+      if (col[i] == sortedColumnName) {
+        link.innerHTML =
+          "<span class = 'text-nowrap'>" + col[i] + sortArrow + "</span>";
+      } else {
+        link.innerHTML = "<span class = 'text-nowrap'>" + col[i] + "</span>";
+      }
       link.addEventListener("click", SortTableColumn, false);
       link.params = {};
       link.params.table_id = tableID;
@@ -248,12 +257,30 @@ function CreateDynamicGrid(tableID, data, sortParams) {
         tabCell.innerHTML = strHTML;
       } else if (col[j] == "Q/Q Delta") {
         let arr_str = "";
+        if (data[i]["arr-dir"] == "up")
+          arr_str = "<i class='fa fa-long-arrow-up'>";
+        else arr_str = "<i class='fa fa-long-arrow-down'>";
 
         var strHTML =
-          '<span  class="badge badge-secondary greenBadge" > <i class="fa fa-long-arrow-up"></i>&nbsp;' +
+          '<span  class="badge badge-secondary greenBadge" > ' +
+          arr_str +
+          "</i>&nbsp;" +
           data[i][col[j]] +
           "</span>&nbsp";
         tabCell.innerHTML = strHTML;
+      } else if (col[j] == "Company" || col[j] == "Industry") {
+        if (data[i]["subText"] !== undefined) {
+          let html =
+            "<div class = 'text-nowrap'>" +
+            data[i][col[j]] +
+            "</div>" +
+            "<div class = 'text-nowrap'>" +
+            data[i]["subText"] +
+            "</div>";
+          tabCell.innerHTML = html;
+        } else {
+          tabCell.innerHTML = data[i][col[j]];
+        }
       } else {
         tabCell.innerHTML = data[i][col[j]];
       }
@@ -360,9 +387,7 @@ function CreateCRSD_Chart(elementID) {
     subtitle: {
       text: ""
     },
-    // legend: {
-    //   enabled: false
-    // },
+
     xAxis: [
       {
         categories: categories,
@@ -434,7 +459,10 @@ function CreateAST_Chart(elementID) {
         color: "white"
       }
     },
-
+    yAxis: {
+      opposite: true,
+      title: false
+    },
     xAxis: {
       categories: [
         "Q2-2017",
@@ -483,5 +511,72 @@ function CreateAST_Chart(elementID) {
     //     }
     //   ]
     // }
+  });
+}
+
+var data_MobileDevices = {
+  name: "Q2-2017 to Q1-2019",
+  data: [1, 1.4, -1.5, -1, 3, 2, 1, 4],
+  title: "Mobile Devices",
+  subtitle: ""
+};
+
+var data_Services = {
+  name: "Q2-2017 to Q1-2019",
+  data: [1, 2, 0.85, -1, 1, -1, 0.5, 2],
+  title: "Services"
+};
+
+var data_Margins = {
+  name: "Q2-2017 to Q1-2019",
+  data: [2, 0.9, 1.5, 0.5, -0.5, 0.5, 0.5, 3],
+  title: "Margins"
+};
+var data_Guidance = {
+  name: "Q2-2017 to Q1-2019",
+  data: [1, 1.5, -0.75, -0.75, 1, 0.5, -0.5, 1],
+  title: "Guidance"
+};
+
+function CreateTrendingTopicsChart(divID, chartData) {
+  Highcharts.chart(divID, {
+    chart: {
+      type: "column",
+      borderWidth: 0,
+      backgroundColor: "rgb(12,16,29)",
+      height: "300px"
+    },
+    title: {
+      text: chartData.title,
+      align: "left",
+      color: "white",
+      style: {
+        color: "white"
+      }
+    },
+    xAxis: {
+      visible: false
+    },
+    yAxis: {
+      opposite: true,
+      title: false,
+      gridLineWidth: 0,
+      minorGridLineWidth: 0,
+      lineColor: "transparent",
+      mix: -5,
+      max: 5
+    },
+    plotOptions: {
+      borderWidth: 0
+    },
+    credits: {
+      enabled: false
+    },
+    series: [
+      {
+        name: chartData.name,
+        data: chartData.data
+      }
+    ]
   });
 }

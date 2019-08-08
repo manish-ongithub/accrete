@@ -14,140 +14,14 @@
     <script>
       window.onload = function() {
         console.log("window - onload");
-        CreateDynamicGrid("tblEarningCall", LatestEarningCall);
-
-        CreateCRSD_Chart("divCRSD");
+        CreateTrendingTopicsChart("divMobileDevices", data_MobileDevices);
+        CreateTrendingTopicsChart("divServices", data_Services);
+        CreateTrendingTopicsChart("divMargins", data_Margins);
+        CreateTrendingTopicsChart("divGuidance", data_Guidance);
 
         CreateAST_Chart("divAST");
-
-        Highcharts.chart("divMobileDevices", {
-          chart: {
-            type: "column",
-            borderWidth: 0,
-            backgroundColor: "rgb(12,16,29)",
-            height : '300px'
-          },
-          title: {
-            text: "Mobile Devices",
-            align: "left",
-            color: "white"
-          },
-          xAxis: {
-            visible: false
-          },
-          yAxis: {
-            opposite: true,
-            title: false,
-            gridLineWidth: 0,
-   minorGridLineWidth: 0,
-   lineColor: 'transparent'
-          },
-          plotOptions: {
-            borderWidth: 0
-          },
-          credits: {
-            enabled: false
-          },
-          series: [
-            {
-              name: "Q2-2017 to Q1-2019",
-              data: [1, 1.4, -1.5, -1, 3, 2, 1, 4]
-            }
-          ]
-        });
-        Highcharts.chart("divServices", {
-          chart: {
-            type: "column",
-            borderWidth:0,
-            backgroundColor: "rgb(12,16,29)",
-            height : '300px'
-          },
-          title: {
-            text: "Services",
-            align: "left"
-          },
-          xAxis: {
-            visible: false
-          },
-          yAxis: {
-            opposite: true,
-            title: false,
-            gridLineWidth: 0,
-   minorGridLineWidth: 0,
-   lineColor: 'transparent'
-          },
-          credits: {
-            enabled: false
-          },
-          series: [
-            {
-              name: "Q2-2017 to Q1-2019",
-              data: [1, 2, .85, -1, 1, -1, 0.5, 2]
-            }
-          ]
-        });
-        Highcharts.chart("divMargins", {
-          chart: {
-            type: "column",
-            borderWidth:0,
-            backgroundColor: "rgb(12,16,29)",
-            height : '300px'
-          },
-          title: {
-            text: "Margins",
-            align: "left"
-          },
-          xAxis: {
-            visible: false
-          },
-          yAxis: {
-            opposite: true,
-            title: false,
-            gridLineWidth: 0,
-   minorGridLineWidth: 0,
-   lineColor: 'transparent'
-          },
-          credits: {
-            enabled: false
-          },
-          series: [
-            {
-              name: "Q2-2017 to Q1-2019",
-              data: [2, 0.9, 1.5, 0.5, -0.5, 0.5, 0.5, 3]
-            }
-          ]
-        });
-        Highcharts.chart("divGuidance", {
-          chart: {
-            type: "column",
-            borderWidth:0,
-            backgroundColor: "rgb(12,16,29)",
-            height : '300px'
-          },
-          title: {
-            text: "Mobile Devices",
-            align: "left"
-          },
-          xAxis: {
-            visible: false
-          },
-          yAxis: {
-            opposite: true,
-            title: false,
-            gridLineWidth: 0,
-   minorGridLineWidth: 0,
-   lineColor: 'transparent'
-          },
-          credits: {
-            enabled: false
-          },
-          series: [
-            {
-              name: "Q2-2017 to Q1-2019",
-              data: [1, 1.5, -0.75, -0.75, 1, 0.5, -0.5, 1]
-            }
-          ]
-        });
+        CreateCRSD_Chart("divCRSD");
+        CreateDynamicGrid("tblEarningCall", LatestEarningCall);
       };
     </script>
     <script></script>
@@ -184,8 +58,11 @@
             <i class="fa fa-angle-down"></i>
           </button>
           <div>
-            <span class="text-white"> Sentiment Scale </span><span style="color:red;">-5</span>
-            <input type="range" /><span style="color:green;">5</span>
+            <span class="text-white"> Sentiment Scale </span
+            ><span style="color:red;">-5</span> <input type="range" /><span
+              style="color:green;"
+              >5</span
+            >
           </div>
         </div>
       </div>
@@ -193,23 +70,14 @@
     <br />
     <div class="container">
       <div class="row">
-
         <div class="col" style="padding-right:0px;">
-          
-            
-              <div id="divMobileDevices"></div>
-            
-          
+          <div id="divMobileDevices"></div>
         </div>
         <div class="col" style="padding:0px;">
-          
-              <div id="divServices"></div>
-          
+          <div id="divServices"></div>
         </div>
         <div class="col" style="padding:0px;">
-          
-              <div id="divMargins"></div>
-          
+          <div id="divMargins"></div>
         </div>
         <div class="col" style="padding-left:0px;">
           <div id="divGuidance"></div>
