@@ -15,7 +15,7 @@
         CreateDynamicGrid("tblTrendingInd", Trending_industries);
         CreateDynamicGrid("tblTrendingStocks", Trending_stocks);
         CreateDynamicGrid("tblTrendingTopics", Trending_topics);
-        CreateDynamicGrid("tblEarningCall", LatestEarningCall);
+        CreateLatestEarningGrid("tblEarningCall", LatestEarningCall);
       };
     </script>
   </head>
@@ -50,8 +50,11 @@
             Overview <i class="fa fa-angle-down"></i>
           </button>
           <div>
-            <span class="text-white"> Sentiment Scale </span><span style="color:red;padding:5px;">-5</span>
-            <input type="range" /><span style="color:green;padding:5px;">5</span>
+            <span class="text-white"> Sentiment Scale </span
+            ><span style="color:red;padding:5px;">-5</span>
+            <input type="range" /><span style="color:green;padding:5px;"
+              >5</span
+            >
           </div>
         </div>
       </div>

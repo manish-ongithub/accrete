@@ -41,18 +41,21 @@ var Trending_industries = [
 var Trending_stocks = [
   {
     Company: "BEN-US",
+    subText: "FRANKLIN RESOURCES INC",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
   },
   {
     Company: "LB-US",
+    subText: "L BRANDS INC",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
   },
   {
     Company: "DISH-US",
+    subText: "DISH NETWORK CORP CLA..",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
@@ -60,12 +63,14 @@ var Trending_stocks = [
 
   {
     Company: "CME-US",
+    subText: "CME GROUP INC CLASS A",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
   },
   {
     Company: "BBBY-US",
+    subText: "Bed Bath & Beyon Inc.",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
@@ -75,18 +80,21 @@ var Trending_stocks = [
 var Trending_topics = [
   {
     Company: "Switches",
+    subText: "Networking",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
   },
   {
     Company: "Hygiene",
+    subText: "Personal Care",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
   },
   {
     Company: "Upstream",
+    subText: "Electricity and Gas Utilities",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
@@ -94,12 +102,14 @@ var Trending_topics = [
 
   {
     Company: "Hardware",
+    subText: "Internet Services",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
   },
   {
     Company: "Routers",
+    subText: "Networking",
     "Aggregate Sentiment": "3.5",
     "Q/Q Delta": "13.23%",
     "arr-dir": "up"
@@ -221,10 +231,9 @@ function CreateDynamicGrid(tableID, data, sortParams) {
       link.setAttribute("class", "sortableHeader text-white");
       //link.setAttribute("href", "");
       if (col[i] == sortedColumnName) {
-        link.innerHTML =
-          "<span class = 'text-nowrap'>" + col[i] + sortArrow + "</span>";
+        link.innerHTML = col[i] + sortArrow;
       } else {
-        link.innerHTML = "<span class = 'text-nowrap'>" + col[i] + "</span>";
+        link.innerHTML = col[i];
       }
       link.addEventListener("click", SortTableColumn, false);
       link.params = {};
@@ -274,7 +283,119 @@ function CreateDynamicGrid(tableID, data, sortParams) {
             "<div class = 'text-nowrap'>" +
             data[i][col[j]] +
             "</div>" +
+            "<div class = 'text-nowrap' style='color:#888888;'>" +
+            data[i]["subText"] +
+            "</div>";
+          tabCell.innerHTML = html;
+        } else {
+          tabCell.innerHTML = data[i][col[j]];
+        }
+      } else {
+        tabCell.innerHTML = data[i][col[j]];
+      }
+    }
+  }
+}
+
+function CreateLatestEarningGrid(tableID, data, sortParams) {
+  var sortedColumnName = "";
+  var sortDir = "asc";
+  var sortArrow = "";
+  if (sortParams != undefined) {
+    sortedColumnName = sortParams.col;
+    sortDir = sortParams.dir;
+    if (sortDir == "asc") {
+      sortArrow = '&nbsp;<i class="fa fa-long-arrow-up"></i>';
+    } else {
+      sortArrow = '&nbsp;<i class="fa fa-long-arrow-down"></i>';
+    }
+  }
+  var col = [];
+  for (var i = 0; i < data.length; i++) {
+    for (var key in data[i]) {
+      if (key !== "arr-dir" && key !== "subText") {
+        if (col.indexOf(key) === -1) {
+          col.push(key);
+        }
+      }
+    }
+  }
+
+  var table = document.getElementById(tableID);
+  if (table) {
+    while (table.hasChildNodes()) {
+      table.removeChild(table.childNodes[0]);
+    }
+  }
+  // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+  var tr = table.insertRow(-1); // TABLE ROW.
+
+  for (var i = 0; i < col.length; i++) {
+    var th = document.createElement("th"); // TABLE HEADER.
+
+    if (
+      col[i] == "Company" ||
+      col[i] == "Aggregate Sentiment" ||
+      col[i] == "Q/Q Delta" ||
+      col[i] == "Industry"
+    ) {
+      var link = document.createElement("a");
+      link.setAttribute("class", "sortableHeader text-white");
+      if (col[i] == sortedColumnName) {
+        link.innerHTML = col[i] + sortArrow;
+      } else {
+        link.innerHTML = col[i];
+      }
+      link.addEventListener("click", SortTableColumn, false);
+      link.params = {};
+      link.params.table_id = tableID;
+      link.params.columnIndex = i;
+      link.params.colName = col[i];
+      link.params.dir = sortDir;
+      th.appendChild(link);
+    } else {
+      th.innerHTML = col[i];
+    }
+    tr.appendChild(th);
+  }
+
+  // ADD JSON DATA TO THE TABLE AS ROWS.
+  for (var i = 0; i < data.length; i++) {
+    tr = table.insertRow(-1);
+
+    for (var j = 0; j < col.length; j++) {
+      var tabCell = tr.insertCell(-1);
+      if (col[j] == "Driving Topics") {
+        var valArr = data[i][col[j]].split(",");
+        var strHTML = "";
+        for (let k = 0; k < valArr.length; ++k) {
+          strHTML +=
+            '<span  class="badge badge-secondary customBadge">' +
+            valArr[k] +
+            "</span>&nbsp";
+        }
+        tabCell.innerHTML = strHTML;
+      } else if (col[j] == "Q/Q Delta") {
+        let arr_str = "";
+        if (data[i]["arr-dir"] == "up")
+          arr_str = "<i class='fa fa-long-arrow-up'>";
+        else arr_str = "<i class='fa fa-long-arrow-down'>";
+
+        var strHTML =
+          '<span  class="badge badge-secondary greenBadge" > ' +
+          arr_str +
+          "</i>&nbsp;" +
+          data[i][col[j]] +
+          "</span>&nbsp";
+        tabCell.innerHTML = strHTML;
+      } else if (col[j] == "Company" || col[j] == "Industry") {
+        if (data[i]["subText"] !== undefined) {
+          let html =
             "<div class = 'text-nowrap'>" +
+            data[i][col[j]] +
+            "</div>" +
+            "<div class = 'text-nowrap' style='color:#888888;'>" +
             data[i]["subText"] +
             "</div>";
           tabCell.innerHTML = html;
@@ -291,20 +412,32 @@ function CreateDynamicGrid(tableID, data, sortParams) {
 var sortByProperty = function(property, dir) {
   if (dir == "asc") {
     return function(x, y) {
-      return x[property] === y[property]
-        ? 0
-        : x[property] > y[property]
-        ? 1
-        : -1;
+      if (isNaN(parseFloat(x[property]))) {
+        return x[property] === y[property]
+          ? 0
+          : x[property] > y[property]
+          ? 1
+          : -1;
+      } else {
+        var a = parseFloat(x[property]);
+        var b = parseFloat(y[property]);
+        return a === b ? 0 : a > b ? 1 : -1;
+      }
     };
   }
   if (dir == "desc") {
     return function(x, y) {
-      return x[property] === y[property]
-        ? 0
-        : x[property] < y[property]
-        ? 1
-        : -1;
+      if (isNaN(parseFloat(x[property]))) {
+        return x[property] === y[property]
+          ? 0
+          : x[property] < y[property]
+          ? 1
+          : -1;
+      } else {
+        var a = parseFloat(x[property]);
+        var b = parseFloat(y[property]);
+        return a === b ? 0 : a < b ? 1 : -1;
+      }
     };
   }
 };
