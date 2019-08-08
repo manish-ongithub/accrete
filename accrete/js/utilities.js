@@ -229,6 +229,7 @@ function CreateDynamicGrid(tableID, data, sortParams) {
       var link = document.createElement("a");
       link.setAttribute("class", "sortableHeader");
       link.setAttribute("style", "font-size:14px;font-weight:normal;");
+
       if (col[i] == sortedColumnName) {
         link.innerHTML = col[i] + sortArrow;
       } else {
@@ -258,6 +259,9 @@ function CreateDynamicGrid(tableID, data, sortParams) {
       var tabCell = tr.insertCell(-1);
       if (col[j] == "Aggregate Sentiment" || col[j] == "Q/Q Delta") {
         tabCell.setAttribute("style", "text-align:center;");
+
+        if (col[j] == "Aggregate Sentiment")
+          tabCell.setAttribute("style", "color:rgb(48, 204, 91);");
       }
       if (col[j] == "Driving Topics") {
         var valArr = data[i][col[j]].split(",");
@@ -347,6 +351,7 @@ function CreateLatestEarningGrid(tableID, data, sortParams) {
     ) {
       var link = document.createElement("a");
       link.setAttribute("class", "sortableHeader text-white");
+
       if (col[i] == sortedColumnName) {
         link.innerHTML = col[i] + sortArrow;
       } else {
@@ -362,6 +367,9 @@ function CreateLatestEarningGrid(tableID, data, sortParams) {
     } else {
       th.innerHTML = col[i];
     }
+    if (col[i] == "Aggregate Sentiment") {
+      th.setAttribute("style", "text-align:center;");
+    }
     tr.appendChild(th);
   }
 
@@ -371,6 +379,12 @@ function CreateLatestEarningGrid(tableID, data, sortParams) {
 
     for (var j = 0; j < col.length; j++) {
       var tabCell = tr.insertCell(-1);
+      if (col[j] == "Aggregate Sentiment" || col[j] == "Q/Q Delta") {
+        tabCell.setAttribute("style", "text-align:center;");
+
+        if (col[j] == "Aggregate Sentiment")
+          tabCell.setAttribute("style", "color:rgb(48, 204, 91);");
+      }
       if (col[j] == "Driving Topics") {
         var valArr = data[i][col[j]].split(",");
         var strHTML = "";
