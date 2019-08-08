@@ -19,6 +19,35 @@
   cursor: pointer;
 }
 
+.mention {
+  width: 89.34px;
+  height: 19px;
+  color: #7b44c7;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+}
+.delta {
+  width: 37.52px;
+  height: 17px;
+  color: #30cc5b;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.fromlastqu {
+  width: 103.47px;
+  height: 19px;
+  color: #d8d8d8;
+  font-family: "SFProText-Regular";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
 .cardHeader {
   background-color: rgb(18, 24, 42);
   font-family: Roboto;

@@ -670,27 +670,59 @@ var data_MobileDevices = {
   name: "Q2-2017 to Q1-2019",
   data: [1, 1.4, -1.5, -1, 3, 2, 1, 4],
   title: "Mobile Devices",
-  subtitle: ""
+  subtitle: [
+    "34 Mentions",
+    '<i class="fa fa-long-arrow-up">28.1%',
+    "from last quarter"
+  ]
 };
 
 var data_Services = {
   name: "Q2-2017 to Q1-2019",
   data: [1, 2, 0.85, -1, 1, -1, 0.5, 2],
-  title: "Services"
+  title: "Services",
+  subtitle: [
+    "28 Mentions",
+    '<i class="fa fa-long-arrow-up">28.1%',
+    "from last quarter"
+  ]
 };
 
 var data_Margins = {
   name: "Q2-2017 to Q1-2019",
   data: [2, 0.9, 1.5, 0.5, -0.5, 0.5, 0.5, 3],
-  title: "Margins"
+  title: "Margins",
+  subtitle: [
+    "12 Mentions",
+    '<i class="fa fa-long-arrow-up">28.1%',
+    "from last quarter"
+  ]
 };
 var data_Guidance = {
   name: "Q2-2017 to Q1-2019",
   data: [1, 1.5, -0.75, -0.75, 1, 0.5, -0.5, 1],
-  title: "Guidance"
+  title: "Guidance",
+  subtitle: [
+    "39 Mentions",
+    '<i class="fa fa-long-arrow-up">28.1%',
+    "from last quarter"
+  ]
 };
-
 function CreateTrendingTopicsChart(divID, chartData) {
+  var subtitleHTML = "";
+  for (let i = 0; i < chartData.subtitle.length; ++i) {
+    if (i == 0) {
+      subtitleHTML +=
+        '<div class="mention">' + chartData.subtitle[i] + "</div>";
+    }
+    if (i == 1) {
+      subtitleHTML += '<div class="delta">' + chartData.subtitle[i] + "</div>";
+    }
+    if (i == 2) {
+      subtitleHTML +=
+        '<div class="fromlastqu">' + chartData.subtitle[i] + "</div>";
+    }
+  }
   Highcharts.chart(divID, {
     chart: {
       type: "column",
@@ -705,6 +737,12 @@ function CreateTrendingTopicsChart(divID, chartData) {
       style: {
         color: "white"
       }
+    },
+
+    subtitle: {
+      useHTML: true,
+      text: subtitleHTML,
+      align: "left"
     },
     xAxis: {
       visible: false
