@@ -522,15 +522,19 @@ function CreateCRSD_Chart(elementID) {
     "Energous Corporation"
   ];
 
-  var subHTML = '<div><button type="button" class="btn btn-sm btn-dark">Q2-2017<i class="fa fa-angle-down"></i></button>';
-  subHTML += '<span class="text-white" style="padding:5px;font-size:14px;">&nbsp;to&nbsp;</span>'
-  subHTML += '<button type="button" class="btn btn-sm  btn-dark">Q1-2019<i class="fa fa-angle-down"></i></button></div>';
+  var subHTML =
+    '<div><button type="button" class="btn btn-sm btn-dark">Q2-2017<i class="fa fa-angle-down"></i></button>';
+  subHTML +=
+    '<span class="text-white" style="padding:5px;font-size:14px;">&nbsp;to&nbsp;</span>';
+  subHTML +=
+    '<button type="button" class="btn btn-sm  btn-dark">Q1-2019<i class="fa fa-angle-down"></i></button></div>';
 
   Highcharts.chart(elementID, {
     chart: {
       type: "bar",
       color: "rgb(18, 24, 42)",
-      backgroundColor: "rgb(12,16,29)"
+      backgroundColor: "rgb(12,16,29)",
+      height: "600px"
     },
 
     title: {
@@ -542,8 +546,8 @@ function CreateCRSD_Chart(elementID) {
     },
     subtitle: {
       text: subHTML,
-      useHTML : true,
-      align :"left"
+      useHTML: true,
+      align: "left"
     },
 
     xAxis: [
@@ -559,7 +563,11 @@ function CreateCRSD_Chart(elementID) {
       title: {
         text: null
       },
-      labels: []
+      //labels:
+      minorTicks: false,
+      min: -1,
+      max: 2,
+      tickInterval: 0.5
     },
 
     plotOptions: {
@@ -576,7 +584,8 @@ function CreateCRSD_Chart(elementID) {
             color: "green" // Values from 0 (including) and up have the color green
           }
         ],
-        borderWidth:0
+        borderWidth: 0,
+        pointWidth: 15
       }
     },
 
@@ -591,7 +600,7 @@ function CreateCRSD_Chart(elementID) {
           1.1,
           0.9,
           0.4,
-          0.3,  
+          0.3,
           0.1,
           -0.25,
           -0.4,
@@ -604,9 +613,12 @@ function CreateCRSD_Chart(elementID) {
 }
 
 function CreateAST_Chart(elementID) {
-  var subHTML = '<div><button type="button" class="btn btn-sm  btn-dark">Q2-2017<i class="fa fa-angle-down"></i></button>';
-  subHTML += '<span class="text-white" style="padding:5px;font-size:14px;">&nbsp;to&nbsp;</span>'
-  subHTML += '<button type="button" class="btn btn-sm  btn-dark">Q1-2019<i class="fa fa-angle-down"></i></button></div>';
+  var subHTML =
+    '<div><button type="button" class="btn btn-sm  btn-dark">Q2-2017<i class="fa fa-angle-down"></i></button>';
+  subHTML +=
+    '<span class="text-white" style="padding:5px;font-size:14px;">&nbsp;to&nbsp;</span>';
+  subHTML +=
+    '<button type="button" class="btn btn-sm  btn-dark">Q1-2019<i class="fa fa-angle-down"></i></button></div>';
   Highcharts.chart(elementID, {
     chart: {
       backgroundColor: "rgb(12,16,29)",
@@ -617,21 +629,22 @@ function CreateAST_Chart(elementID) {
     title: {
       text: "<div class=''>Aggregate Sentiment Trend</div>",
       align: "left",
-      useHTML : true,
+      useHTML: true,
       style: {
-        color: "white",
-        
-        
+        color: "white"
       }
     },
-    subtitle:{
-      useHTML:true,
-      align:"left",
-      text : subHTML
+    subtitle: {
+      useHTML: true,
+      align: "left",
+      text: subHTML
     },
     yAxis: {
       opposite: true,
-      title: false
+      title: false,
+      minorTicks: false,
+      min: 0,
+      max: 5
     },
     xAxis: {
       categories: [
@@ -688,44 +701,27 @@ var data_MobileDevices = {
   name: "Q2-2017 to Q1-2019",
   data: [1, 1.4, -1.5, -1, 3, 2, 1, 4],
   title: "Mobile Devices",
-  subtitle: [
-    "34 Mentions","4.61",
-    '35.2%',
-    "from last quarter"
-  ]
+  subtitle: ["34 Mentions", "4.61", "35.2%", "from last quarter"]
 };
 
 var data_Services = {
   name: "Q2-2017 to Q1-2019",
   data: [1, 2, 0.85, -1, 1, -1, 0.5, 2],
   title: "Services",
-  subtitle: [
-    "28 Mentions","2.34",
-    '28.1%',
-    "from last quarter"
-  ]
+  subtitle: ["28 Mentions", "2.34", "28.1%", "from last quarter"]
 };
 
 var data_Margins = {
   name: "Q2-2017 to Q1-2019",
   data: [2, 0.9, 1.5, 0.5, -0.5, 0.5, 0.5, 3],
   title: "Margins",
-  subtitle: [
-    "12 Mentions","3.15",
-    '25.2%',
-    "from last quarter"
-  ]
+  subtitle: ["12 Mentions", "3.15", "25.2%", "from last quarter"]
 };
 var data_Guidance = {
   name: "Q2-2017 to Q1-2019",
   data: [1, 1.5, -0.75, -0.75, 1, 0.5, -0.5, 1],
   title: "Guidance",
-  subtitle: [
-    "39 Mentions",
-    "1.20",
-    '22.1%',
-    "from last quarter"
-  ]
+  subtitle: ["39 Mentions", "1.20", "22.1%", "from last quarter"]
 };
 function CreateTrendingTopicsChart(divID, chartData) {
   var subtitleHTML = "<div>";
@@ -733,16 +729,19 @@ function CreateTrendingTopicsChart(divID, chartData) {
     if (i == 0) {
       subtitleHTML +=
         '<div class="mention">' + chartData.subtitle[i] + "</div>";
-    }
-    else if (i == 1) {
-      subtitleHTML += '<span class="sentiment">' + chartData.subtitle[i] + "</span>&nbsp;&nbsp;&nbsp;<span style='color:#30cc5b'></span>";
-    }
-    else if (i == 2) {
-      subtitleHTML += '<span class="delta">&nbsp;' + chartData.subtitle[i] + "</span>";
-    }
-    else if (i == 3) {
+    } else if (i == 1) {
       subtitleHTML +=
-        '&nbsp;&nbsp;&nbsp;<span class="fromlastqu">' + chartData.subtitle[i] + "</span>";
+        '<span class="sentiment">' +
+        chartData.subtitle[i] +
+        "</span>&nbsp;&nbsp;&nbsp;<span style='color:#30cc5b'></span>";
+    } else if (i == 2) {
+      subtitleHTML +=
+        '<span class="delta">&nbsp;' + chartData.subtitle[i] + "</span>";
+    } else if (i == 3) {
+      subtitleHTML +=
+        '&nbsp;&nbsp;&nbsp;<span class="fromlastqu">' +
+        chartData.subtitle[i] +
+        "</span>";
     }
   }
   subtitleHTML += "</div>";
@@ -791,7 +790,7 @@ function CreateTrendingTopicsChart(divID, chartData) {
             color: "green" // Values from 0 (including) and up have the color green
           }
         ],
-        borderWidth:0
+        borderWidth: 0
       }
     },
     credits: {
