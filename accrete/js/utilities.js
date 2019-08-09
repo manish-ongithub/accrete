@@ -670,7 +670,17 @@ function CreateAST_Chart(elementID) {
       verticalAlign: "middle"
     },
 
-    plotOptions: {},
+    plotOptions: {
+      series: {
+        marker: {
+          fillColor: "rgb(123,68,199)",
+          lineWidth: 0.5,
+          lineColor: "rgb(133,134,135)"
+        },
+        color: "rgb(133,134,135)",
+        lineWidth: 1
+      }
+    },
 
     series: [
       {
