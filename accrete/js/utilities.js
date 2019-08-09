@@ -806,6 +806,8 @@ function CreateTrendingTopicsChart(divID, chartData) {
       itemStyle: {
         color: "white"
       }
+      // symbolWidth: 0,
+      //   symbolHeight: 0
     },
     plotOptions: {
       borderWidth: 0,

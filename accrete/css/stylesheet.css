@@ -56,6 +56,12 @@
   font-weight: 700;
   line-height: 22px;
 }
+.seachBox {
+  width: 250px;
+  color: rgb(76, 76, 76);
+  background-color: rgb(12, 16, 29);
+  border: 0;
+}
 .ttopic {
   color: #d8d8d8;
   font-family: "SFProText-Regular";
