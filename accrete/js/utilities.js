@@ -549,12 +549,14 @@ function CreateCRSD_Chart(elementID) {
       useHTML: true,
       align: "left"
     },
-
+    legend: false,
     xAxis: [
       {
         categories: categories,
-        style: {
-          color: "white"
+        labels: {
+          style: {
+            color: "white"
+          }
         }
         //reversed: false,
       }
@@ -766,6 +768,7 @@ function CreateTrendingTopicsChart(divID, chartData) {
       text: subtitleHTML,
       align: "left"
     },
+
     xAxis: {
       visible: false
     },
