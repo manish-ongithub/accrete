@@ -658,7 +658,12 @@ function CreateAST_Chart(elementID) {
         "Q3-2018",
         "Q4-2018",
         "Q1-2019"
-      ]
+      ],
+      labels: {
+        style: {
+          color: "white"
+        }
+      }
       // title: {
       //     text: 'Number of Employees'
       // },
@@ -780,7 +785,13 @@ function CreateTrendingTopicsChart(divID, chartData) {
     },
 
     xAxis: {
-      visible: false
+      visible: false,
+      //categories: [chartData.name],
+      labels: {
+        style: {
+          color: "white"
+        }
+      }
     },
     yAxis: {
       opposite: true,
@@ -790,6 +801,11 @@ function CreateTrendingTopicsChart(divID, chartData) {
       lineColor: "transparent",
       mix: -5,
       max: 5
+    },
+    legend: {
+      itemStyle: {
+        color: "white"
+      }
     },
     plotOptions: {
       borderWidth: 0,
