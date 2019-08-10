@@ -753,10 +753,10 @@ function CreateTrendingTopicsChart(divID, chartData) {
         "</span>&nbsp;&nbsp;&nbsp;<span style='color:#30cc5b'></span>";
     } else if (i == 2) {
       subtitleHTML +=
-        '<span class="delta">&nbsp;' + chartData.subtitle[i] + "</span>";
+        '<span class="delta"><i class="fa fa-long-arrow-up"></i>&nbsp;' + chartData.subtitle[i] + "</span>";
     } else if (i == 3) {
       subtitleHTML +=
-        '&nbsp;&nbsp;&nbsp;<span class="fromlastqu">' +
+        '&nbsp;&nbsp;<span class="fromlastqu">' +
         chartData.subtitle[i] +
         "</span>";
     }
